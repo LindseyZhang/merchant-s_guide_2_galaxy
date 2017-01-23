@@ -19,7 +19,7 @@ public class InputParser {
         howManyQuestion = new HowManyQuestion();
         howMuchQuestion = new HowManyQuestion();
         howManyQuestion.setNextHandler(howMuchQuestion);
-        return "";
+  //      return "";
     }
 
     public void CategoryInput(String input) {
