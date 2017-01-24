@@ -16,7 +16,7 @@ public class InputParser {
         InitStatementChain(priceCenter);
     }
 
-    public Vector<String> getQuestions() {
+    public Vector<String> GetQuestions() {
         return questions;
     }
 
@@ -43,10 +43,10 @@ public class InputParser {
         StatementBase sumGoodStatement;
         statementHandler = new IsSymbolStatement(priceCenter);
         sumGoodStatement = new SumGoodStatement(priceCenter);
-        statementHandler.setNextHandler(sumGoodStatement);
+        statementHandler.SetNextHandler(sumGoodStatement);
     }
 
     private void ParseStatement(String statement) {
-        statementHandler.handleStatement(statement);
+        statementHandler.HandleStatement(statement);
     }
 }

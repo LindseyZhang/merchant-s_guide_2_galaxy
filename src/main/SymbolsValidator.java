@@ -1,45 +1,53 @@
 package main;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Vector;
 
 public class SymbolsValidator {
-    private static final int DLVRepeatLimit = 2;
-    private BasicInfo basicInfo = new BasicInfo();
+    private static final int RepeatLimit = 2;
+    private static final int MaxCombineSymbolSize = 2;
+    private static final int MaxSuccessionTime = 3;
     private char[] symbolsArray;
-
 
     public SymbolsValidator() {
     }
 
     public boolean IsRomanValid(String roman) {
-        if (!basicInfo.IsBasicSymbolString(roman)) return false;
+
+        boolean test = BasicInfo.IsBasicSymbolString(roman);
+        if (!BasicInfo.IsBasicSymbolString(roman)) return false;
         symbolsArray = roman.toCharArray();
-        return IsIXCMRepeatInSuccessionMaxThreeTimes()
-                && DLVCanNeverRepeat()
-                && IsOnlyOneSmallSymbolSubstractedFrom()
-                && IsSubtractValid(symbolsArray);
+
+        return RepeatInSuccessionMaxThreeTimesRule()
+                && NeverRepeatRule()
+                && OnlyOneSmallSymbolSubstractedFromRule()
+                && SubtractRule(symbolsArray);
     }
 
-    private boolean IsIXCMRepeatInSuccessionMaxThreeTimes(){
-        char[] targets = {'I','X','C','N'};
+    private boolean RepeatInSuccessionMaxThreeTimesRule() {
+        char[] targets = {'I', 'X', 'C', 'N'};
 
         char cur;
-        if (symbolsArray.length <= 3){
+        if (symbolsArray.length <= MaxSuccessionTime) {
             return true;
         }
         cur = symbolsArray[0];
         int count = 1;
-        for (int i = 1; i < symbolsArray.length; ++i){
-            if (!CharInTarget(cur, targets)) continue;
+
+        for (int i = 1; i < symbolsArray.length; ++i) {
+            if (!CharInTarget(cur, targets)) {
+                cur = symbolsArray[i];
+                continue;
+            }
 
             if (cur == symbolsArray[i]) {
                 ++count;
-                if (3 == count) return false;
+                if (MaxSuccessionTime < count) return false;
             } else {
-                //TODO They may appear four times if the third and fourth are separated by a smaller value, such as XXXIX
                 cur = symbolsArray[i];
                 count = 1;
             }
@@ -47,11 +55,9 @@ public class SymbolsValidator {
         return true;
     }
 
-
-    //"D", "L", and "V" can never be repeated.
-    private boolean DLVCanNeverRepeat() {
-        char[] targets = {'D','L','V'};
-        Map<Character,Integer>  result = new HashMap<Character,Integer>();
+    private boolean NeverRepeatRule() {
+        char[] targets = {'D', 'L', 'V'};
+        Map<Character, Integer> result = new HashMap<Character, Integer>();
 
         for (int i = 0; i < symbolsArray.length; ++i) {
             if (!CharInTarget(symbolsArray[i], targets)) continue;
@@ -60,51 +66,47 @@ public class SymbolsValidator {
                 result.put(symbolsArray[i], 1);
             } else {
                 result.put(symbolsArray[i], result.get(symbolsArray[i]) + 1);
-                if (result.get(symbolsArray[i]) >= DLVRepeatLimit) return false;
+                if (result.get(symbolsArray[i]) >= RepeatLimit) return false;
             }
         }
         return true;
     }
 
-    private boolean CharInTarget(char symbol, char[] targets){
+    private boolean CharInTarget(char symbol, char[] targets) {
         for (int i = 0; i < targets.length; ++i) {
             if (symbol == targets[i]) return true;
         }
         return false;
     }
 
-   private boolean IsSubtractValid (char[] array) {
-       SubtractRestrict subtractRestrict = new SubtractRestrict();
-       subtractRestrict.addSubtractFromRule('I',
-               new HashSet<Character>() {{
-                   add('V');
-                   add('X');
-               }});
+    private boolean SubtractRule(char[] array) {
+        SubtractRestrict subtractRestrict = new SubtractRestrict();
+        subtractRestrict.addSubtractFromRule('I', new HashSet<Character>() {{
+            add('V');
+            add('X');
+        }});
 
-       subtractRestrict.addSubtractFromRule('X',
-               new HashSet<Character>() {{
-                   add('L');
-                   add('C');
-               }});
-       subtractRestrict.addSubtractFromRule('C',
-               new HashSet<Character>() {{
-                   add('C');
-                   add('M');
-               }});
-       subtractRestrict.addNeverSubtractRule('V');
-       subtractRestrict.addNeverSubtractRule('L');
-       subtractRestrict.addNeverSubtractRule('D');
+        subtractRestrict.addSubtractFromRule('X', new HashSet<Character>() {{
+            add('L');
+            add('C');
+        }});
+        subtractRestrict.addSubtractFromRule('C', new HashSet<Character>() {{
+            add('D');
+            add('M');
+        }});
 
-       return subtractRestrict.IsSubtractValidSymbol(array);
-   }
+        subtractRestrict.addNeverSubtractRule('V');
+        subtractRestrict.addNeverSubtractRule('L');
+        subtractRestrict.addNeverSubtractRule('D');
+
+        return subtractRestrict.IsSubtractValidSymbol(array);
+    }
 
 
-    private boolean IsOnlyOneSmallSymbolSubstractedFrom() {
-
-        SymbolsSplitor splitor = new SymbolsSplitor();
-        Vector<Vector<Character>> symbols = splitor.SymbolsSplit(symbolsArray);
-        for (Vector<Character> singleValue: symbols) {
-            if (singleValue.size() > 2) {
+    private boolean OnlyOneSmallSymbolSubstractedFromRule() {
+        Vector<Vector<Character>> symbols = BasicInfo.SplitSymbolsToSingleValue(symbolsArray);
+        for (Vector<Character> singleValue : symbols) {
+            if (singleValue.size() > MaxCombineSymbolSize) {
                 return false;
             }
         }

@@ -14,34 +14,50 @@ public class TestSymbolsValidator {
         validator = new SymbolsValidator();
     }
 
-  /*  @Test
-    public void testGenerateReceiptFromBarcodes() {
-        assertTrue(validator.IsIXCMRepeatInSuccessionMaxThreeTimes("hahahaha"));
-        assertFalse(validator.IsIXCMRepeatInSuccessionMaxThreeTimes("XXXXVM"));
-        assertTrue(validator.IsIXCMRepeatInSuccessionMaxThreeTimes("XXVXM"));
-        assertTrue(validator.IsIXCMRepeatInSuccessionMaxThreeTimes("VVVVVXM"));
-        assertTrue(validator.IsIXCMRepeatInSuccessionMaxThreeTimes("00013XM"));
-        assertTrue(validator.IsIXCMRepeatInSuccessionMaxThreeTimes(""));
+    @Test
+    public void testIsRomanValid() {
+        assertTrue(validator.IsRomanValid("MCMIII"));
+        assertTrue(validator.IsRomanValid("MIV"));
+        assertTrue(validator.IsRomanValid("CD"));
+        assertFalse(validator.IsRomanValid("MIIII"));
+        assertTrue(validator.IsRomanValid("MCCCXC"));
+        assertFalse(validator.IsRomanValid("DM"));
+
+        assertFalse(validator.IsRomanValid("DD"));
+
+        assertFalse(validator.IsRomanValid("IIM"));
+        assertTrue(validator.IsRomanValid("VI"));
+        assertFalse(validator.IsRomanValid("VX"));
+    }
+ 
+ /*   @Test
+    public void TestRepeatInSuccessionMaxThreeTimesRule() {
+        assertTrue(validator.RepeatInSuccessionMaxThreeTimesRule("hahahaha"));
+        assertFalse(validator.RepeatInSuccessionMaxThreeTimesRule("XXXXVM"));
+        assertTrue(validator.RepeatInSuccessionMaxThreeTimesRule("XXVXM"));
+        assertTrue(validator.RepeatInSuccessionMaxThreeTimesRule("VVVVVXM"));
+        assertTrue(validator.RepeatInSuccessionMaxThreeTimesRule("00013XM"));
+        assertTrue(validator.RepeatInSuccessionMaxThreeTimesRule(""));
     }
 
     @Test
-    public void testDLVCanNeverRepeat() {
-        assertFalse(validator.DLVCanNeverRepeat("DDXM"));
-        assertFalse(validator.DLVCanNeverRepeat("LLXM"));
-        assertFalse(validator.DLVCanNeverRepeat("VVXM"));
-        assertTrue(validator.DLVCanNeverRepeat("DLVIMX"));
-        assertTrue(validator.DLVCanNeverRepeat("IIMX"));
-        assertFalse(validator.DLVCanNeverRepeat("DLVDMX"));
+    public void TestNeverRepeatRule() {
+        assertFalse(validator.NeverRepeatRule("DDXM"));
+        assertFalse(validator.NeverRepeatRule("LLXM"));
+        assertFalse(validator.NeverRepeatRule("VVXM"));
+        assertTrue(validator.NeverRepeatRule("DLVIMX"));
+        assertTrue(validator.NeverRepeatRule("IIMX"));
+        assertFalse(validator.NeverRepeatRule("DLVDMX"));
     }
 
     @Test
-    public void testIsSubtractValid() {
-        assertTrue(validator.IsSubtractValid("MIX".toCharArray()));
-        assertTrue(validator.IsSubtractValid("XC".toCharArray()));
-        assertFalse(validator.IsSubtractValid("XD".toCharArray()));
-        assertFalse(validator.IsSubtractValid("MIC".toCharArray()));
-        assertFalse(validator.IsSubtractValid("MIV".toCharArray()));
-        assertFalse(validator.IsSubtractValid("MIL".toCharArray()));
-        assertFalse(validator.IsSubtractValid("MID".toCharArray()));
-    }  */
+    public void TestIsSubtractValid() {
+        assertTrue(validator.SubtractRule("MIX".toCharArray()));
+        assertTrue(validator.SubtractRule("XC".toCharArray()));
+        assertFalse(validator.SubtractRule("XD".toCharArray()));
+        assertFalse(validator.SubtractRule("MIC".toCharArray()));
+        assertFalse(validator.SubtractRule("MIV".toCharArray()));
+        assertFalse(validator.SubtractRule("MIL".toCharArray()));
+        assertFalse(validator.SubtractRule("MID".toCharArray()));
+    } */
 }

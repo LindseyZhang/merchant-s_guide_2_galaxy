@@ -15,8 +15,8 @@ public class IsSymbolStatement extends StatementBase {
     public void ParseStatement(String statement) {
         if (matcher.matches()) {
             char[] symbols = matcher.group(2).toCharArray();
-            if (symbols.length >=1) {
-             priceCenter.AddBasicSymbolMap(matcher.group(1), symbols[0]);
+            if (symbols.length >= 1) {
+                priceCenter.AddBasicSymbolMap(matcher.group(1), symbols[0]);
             }
         }
     }

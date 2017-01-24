@@ -2,11 +2,10 @@ package main;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 public class PriceCenter {
     public char NoSymbol = '\0';
-    public double NoPrice = '0';
+    public double NoMissingSymbol = '0';
     private Map<String, Character> basicSymbolMap = new HashMap<String, Character>();
     private Map<String, Double> missingSymbolMap = new HashMap<String, Double>();
 
@@ -26,7 +25,7 @@ public class PriceCenter {
         if (missingSymbolMap.containsKey(key)) {
             return missingSymbolMap.get(key);
         } else {
-            return NoPrice;
+            return NoMissingSymbol;
         }
     }
 

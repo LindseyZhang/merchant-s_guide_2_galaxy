@@ -14,16 +14,16 @@ public class HowMuchQuestion extends QuestionBase {
     }
 
     @Override
-    public String answerQuestion(String question) {
+    public String AnswerQuestion(String question) {
         if (matcher.matches()) {
             String[] symbols = matcher.group(1).split(" ");
 
             StringBuilder strBuilder = new StringBuilder();
-            for (String symbol: symbols) {
+            for (String symbol : symbols) {
                 if (priceCenter.NoSymbol != priceCenter.GetBasicSymbol(symbol)) {
                     strBuilder.append(priceCenter.GetBasicSymbol(symbol));
                 } else {
-                    System.out.println("undefined symbol " + symbol);
+                    System.err.println("undefined symbol " + symbol);
                 }
             }
             return matcher.group(1) + " is "

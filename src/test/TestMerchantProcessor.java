@@ -8,7 +8,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class TestMerchantProcessor {
     @Test
-    public void testOutputServicewithAllSituation(){
+    public void testOutputServicewithAllSituation() {
         String input = "glob is I\n" +
                 "prok is V\n" +
                 "pish is X\n" +

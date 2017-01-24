@@ -1,6 +1,5 @@
 package main;
 
-
 import java.util.Vector;
 
 public class RomanNumberConvertor {
@@ -12,8 +11,7 @@ public class RomanNumberConvertor {
             return 0;
         }
 
-        SymbolsSplitor splitor = new SymbolsSplitor();
-        Vector<Vector<Character>> single_values = splitor.SymbolsSplit(roman.toCharArray());
+        Vector<Vector<Character>> single_values = BasicInfo.SplitSymbolsToSingleValue(roman.toCharArray());
 
         int result = 0;
         for (Vector<Character> single : single_values) {
@@ -27,13 +25,5 @@ public class RomanNumberConvertor {
         }
         return result;
     }
-
-    public String IntegerToRomanNumber(int number) {
-        return null;
-    }
-
-
-
-
 
 }

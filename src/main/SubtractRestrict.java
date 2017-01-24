@@ -1,6 +1,5 @@
 package main;
 
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,29 +8,28 @@ import java.util.Set;
 public class SubtractRestrict {
     private Map<Character, Set<Character>> subtractFromCharaters = new HashMap<Character, Set<Character>>();
     private Set<Character> neverSubtractCharacters = new HashSet<Character>();
-    private BasicInfo basicInfo = new BasicInfo();
 
     public void addSubtractFromRule(Character symbol, Set<Character> froms) {
-
-  /*      if (!basicInfo.IsBasicSymbol(symbol)) {
+        if (!BasicInfo.IsBasicSymbol(symbol)) {
             System.out.println("Invalid symbol:" + symbol);
             return;
         }
 
         for (Character from : froms) {
-            if (!basicInfo.IsBasicSymbol(symbol)) {
+            if (!BasicInfo.IsBasicSymbol(symbol)) {
                 System.out.println("Invalid symbol in froms:" + symbol);
                 return;
             }
-        }  */
+        }  
+
         subtractFromCharaters.put(symbol, froms);
     }
 
     public void addNeverSubtractRule(Character symbol) {
-     /*   if (!basicInfo.IsBasicSymbol(symbol)) {
+        if (!BasicInfo.IsBasicSymbol(symbol)) {
             System.out.println("Invalid symbol:" + symbol);
             return;
-        } */
+        } 
         neverSubtractCharacters.add(symbol);
     }
 
@@ -62,7 +60,7 @@ public class SubtractRestrict {
     }
 
     private boolean IsSubtract(char first, char second) {
-        return basicInfo.FirstSymbolSmallerThanSecond(first, second);
+        return BasicInfo.FirstSymbolSmallerThanSecond(first, second);
     }
 
 }

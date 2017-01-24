@@ -14,14 +14,14 @@ public class HowManyQuestion extends QuestionBase {
     }
 
     @Override
-    public String answerQuestion(String question) {
+    public String AnswerQuestion(String question) {
         if (matcher.matches()) {
             String[] symbols = matcher.group(1).split(" ");
 
             StringBuilder strBuilder = new StringBuilder();
             String valueSymbol = null;
 
-            for (String symbol: symbols) {
+            for (String symbol : symbols) {
                 if (priceCenter.NoSymbol != priceCenter.GetBasicSymbol(symbol)) {
                     strBuilder.append(priceCenter.GetBasicSymbol(symbol));
                 } else {
@@ -29,8 +29,8 @@ public class HowManyQuestion extends QuestionBase {
                 }
             }
 
-           int total =(int) (RomanNumberConvertor.RomanNumberToInteger(strBuilder.toString())
-                    *  priceCenter.GetMissingSymbolValue(valueSymbol));
+            int total = (int) (RomanNumberConvertor.RomanNumberToInteger(strBuilder.toString())
+                    * priceCenter.GetMissingSymbolValue(valueSymbol));
             String result = matcher.group(1) + " is " + total + " Credits\n";
             return result;
         }

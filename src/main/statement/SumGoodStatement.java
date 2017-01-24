@@ -22,16 +22,16 @@ public class SumGoodStatement extends StatementBase {
 
             StringBuilder strBuilder = new StringBuilder();
             String missingSymbol = null;
-            for (String symbol: symbols) {
+            for (String symbol : symbols) {
                 if (priceCenter.NoSymbol != priceCenter.GetBasicSymbol(symbol)) {
-                  strBuilder.append(priceCenter.GetBasicSymbol(symbol));
+                    strBuilder.append(priceCenter.GetBasicSymbol(symbol));
                 } else {
-                   missingSymbol = symbol;
+                    missingSymbol = symbol;
                 }
             }
 
             priceCenter.AddMissingSymbol(missingSymbol,
-                    total_value/convertor.RomanNumberToInteger(strBuilder.toString()));
+                    total_value / convertor.RomanNumberToInteger(strBuilder.toString()));
         }
     }
 }

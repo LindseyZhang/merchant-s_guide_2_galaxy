@@ -15,22 +15,22 @@ public abstract class StatementBase {
         this.priceCenter = priceCenter;
     }
 
-    public void setNextHandler(StatementBase nextHandler) {
+    public void SetNextHandler(StatementBase nextHandler) {
         this.nextHandler = nextHandler;
     }
 
-    public void handleStatement(String statement) {
-        if (isThisStatement(statement)) {
+    public void HandleStatement(String statement) {
+        if (IsThisStatement(statement)) {
             ParseStatement(statement);
         }
         if (nextHandler != null) {
-            nextHandler.handleStatement(statement);
+            nextHandler.HandleStatement(statement);
         }
     }
 
     public abstract void ParseStatement(String statement);
 
-    public boolean isThisStatement(String statement) {
+    public boolean IsThisStatement(String statement) {
         matcher = pattern.matcher(statement);
         return matcher.matches();
     }

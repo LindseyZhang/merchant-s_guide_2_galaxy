@@ -10,14 +10,14 @@ public class MerchantProcess {
     private QuestionBase questionHandler;
 
     public MerchantProcess(String input) {
-          InitFromInput(input);
+          inputParser.ParseInput(input);
           InitQuestionChain(priceCenter);
     }
 
     public String getResult() {
         String result = "";
-        for (String question: inputParser.getQuestions()) {
-            result += questionHandler.handleQuestion(question);
+        for (String question: inputParser.GetQuestions()) {
+            result += questionHandler.HandleQuestion(question);
         }
         return result;
     }
@@ -26,11 +26,7 @@ public class MerchantProcess {
         QuestionBase howMuchQuestion;
         questionHandler = new HowManyQuestion(priceCenter);
         howMuchQuestion = new HowMuchQuestion(priceCenter);
-        questionHandler.setNextHandler(howMuchQuestion);
-    }
-
-    private void InitFromInput(String input) {
-        inputParser.ParseInput(input);
+        questionHandler.SetNextHandler(howMuchQuestion);
     }
 
 }

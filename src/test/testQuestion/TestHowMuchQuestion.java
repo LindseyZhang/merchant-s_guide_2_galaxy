@@ -17,7 +17,7 @@ public class TestHowMuchQuestion {
         priceCenter.AddBasicSymbolMap("glob", 'I');
 
         QuestionBase questionHandler = new HowMuchQuestion(priceCenter);
-        String answer = questionHandler.handleQuestion(question);
+        String answer = questionHandler.HandleQuestion(question);
 
         String expect_result = "pish tegj glob glob is 42";
         assertEquals(answer, expect_result);
