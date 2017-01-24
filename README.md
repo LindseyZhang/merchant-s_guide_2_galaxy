@@ -3,7 +3,7 @@
 问题描述详见最后
 
 ###Set Up
-
+本地java version: 1.7
 主函数入口为src/main/java/Main.java,
 运行时需要给出输入文件的路径作为命令行参数。
 如使用itelliJ, 可点击Run->Edit Configurations, 配置program arguments。
