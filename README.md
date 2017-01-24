@@ -4,7 +4,7 @@
 
 ###Set Up
 
-主函数入口为src/main/Main.java,
+主函数入口为src/main/java/Main.java,
 运行时需要给出输入文件的路径作为命令行参数。
 如使用itelliJ, 可点击Run->Edit Configurations, 配置program arguments。
 可使用提供的输入：src/input.txt。

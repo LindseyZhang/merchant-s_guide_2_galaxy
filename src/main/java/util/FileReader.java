@@ -25,7 +25,7 @@ public class FileReader {
             return filecontent.toString();
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return "";
         }
     }
 }

@@ -28,6 +28,6 @@ public class QuestionHandlerForHowMuch extends QuestionBase {
             return matcher.group(1) + " is "
                     + RomanNumberConvertor.romanNumberToInteger(strBuilder.toString()) + "\n";
         }
-        return null;
+        return "";
     }
 }

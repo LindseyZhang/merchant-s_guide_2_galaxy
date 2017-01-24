@@ -11,26 +11,24 @@ public class SymbolsValidator {
     private static final int REPEAT_LIMIT = 2;
     private static final int MAX_COMBINE_SYMBOL_SIZE = 2;
     private static final int MAX_SUCCESSION_TIME = 3;
+    private char[] successionRepeatSymbols = {'I', 'X', 'C', 'N'};
+    private char[] neverRepeatSymbols = {'D', 'L', 'V'};
     private char[] symbolsArray;
 
     public SymbolsValidator() {
     }
 
     public boolean isRomanValid(String roman) {
-
-        boolean test = BasicInfo.isBasicSymbolString(roman);
         if (!BasicInfo.isBasicSymbolString(roman)) return false;
         symbolsArray = roman.toCharArray();
 
-        return repeatInSuccessionMaxThreeTimesRule()
+        return successionRepeatRule()
                 && neverRepeatRule()
                 && onlyOneSmallSymbolSubstractedFromRule()
                 && subtractRule(symbolsArray);
     }
 
-    private boolean repeatInSuccessionMaxThreeTimesRule() {
-        char[] targets = {'I', 'X', 'C', 'N'};
-
+    private boolean successionRepeatRule() {
         char cur;
         if (symbolsArray.length <= MAX_SUCCESSION_TIME) {
             return true;
@@ -39,7 +37,7 @@ public class SymbolsValidator {
         int count = 1;
 
         for (int i = 1; i < symbolsArray.length; ++i) {
-            if (!charInTarget(cur, targets)) {
+            if (!charInTarget(cur, successionRepeatSymbols)) {
                 cur = symbolsArray[i];
                 continue;
             }
@@ -56,11 +54,10 @@ public class SymbolsValidator {
     }
 
     private boolean neverRepeatRule() {
-        char[] targets = {'D', 'L', 'V'};
         Map<Character, Integer> result = new HashMap<Character, Integer>();
 
         for (int i = 0; i < symbolsArray.length; ++i) {
-            if (!charInTarget(symbolsArray[i], targets)) continue;
+            if (!charInTarget(symbolsArray[i], neverRepeatSymbols)) continue;
 
             if (!result.containsKey(symbolsArray[i])) {
                 result.put(symbolsArray[i], 1);
@@ -101,7 +98,6 @@ public class SymbolsValidator {
 
         return subtractRestrict.isSubtractValidSymbol(array);
     }
-
 
     private boolean onlyOneSmallSymbolSubstractedFromRule() {
         Vector<Vector<Character>> symbols = BasicInfo.splitSymbolsToElement(symbolsArray);

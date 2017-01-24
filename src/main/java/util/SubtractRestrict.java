@@ -55,10 +55,7 @@ public class SubtractRestrict {
     }
 
     private boolean checkNeverSubtractRule(char symbol) {
-        if (neverSubtractCharacters.contains(symbol)) {
-            return false;
-        }
-        return true;
+        return !neverSubtractCharacters.contains(symbol);
     }
 
     private boolean isSubtract(char first, char second) {
