@@ -39,7 +39,7 @@ public class SubtractRestrict {
         for (int i = 0; i < charArray.length-1; ++i) {
             if (!IsSubtract(charArray[i], charArray[i+1])) continue;
             if (!(CheckSubtractedFromRule(charArray[i], charArray[i+1])
-                    && CheckNeverSubtractRule(charArray[i+1]))) {
+                    && CheckNeverSubtractRule(charArray[i]))) {
                 return false;
             }
         }

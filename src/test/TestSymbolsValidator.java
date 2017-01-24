@@ -32,7 +32,7 @@ public class TestSymbolsValidator {
         assertTrue(validator.DLVCanNeverRepeat("DLVIMX"));
         assertTrue(validator.DLVCanNeverRepeat("IIMX"));
         assertFalse(validator.DLVCanNeverRepeat("DLVDMX"));
-    } */
+    }
 
     @Test
     public void testIsSubtractValid() {
@@ -43,5 +43,5 @@ public class TestSymbolsValidator {
         assertFalse(validator.IsSubtractValid("MIV".toCharArray()));
         assertFalse(validator.IsSubtractValid("MIL".toCharArray()));
         assertFalse(validator.IsSubtractValid("MID".toCharArray()));
-    }
+    }  */
 }

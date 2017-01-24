@@ -1,11 +1,12 @@
 package test;
 
+import main.MerchantProcess;
 import org.junit.Test;
-import main.ConvetorMain;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
-public class TestMain {
+public class TestMerchantProcessor {
     @Test
     public void testOutputServicewithAllSituation(){
         String input = "glob is I\n" +
@@ -21,7 +22,7 @@ public class TestMain {
                 "how many Credits is glob prok Iron ?\n" +
                 "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?\n";
 
-        ConvetorMain convetorMain = new ConvetorMain(input);
+        MerchantProcess convetorMain = new MerchantProcess(input);
 
         String result = convetorMain.getResult();
 
@@ -32,6 +33,6 @@ public class TestMain {
                 "glob prok Iron is 782 Credits\n" +
                 "I have no idea what you are talking about\n";
 
-        assertTrue(result.matches(expectResult));
+        assertEquals(result, expectResult);
     }
 }
