@@ -2,16 +2,17 @@
 
 问题描述详见最后
 
-1. Set Up
+###Set Up
 
 主函数入口为src/main/Main.java,
 运行时需要给出输入文件的路径作为命令行参数。
 如使用itelliJ, 可点击Run->Edit Configurations, 配置program arguments。
 可使用提供的输入：src/input.txt。
 
-2. Breif
-  考虑到语义变化大，为兼容以后处理类似 "Silver means 17 Credits", "How many Silver equals 170 Credits ?"等语句，
-  对statement和question的处理均采用了职责连模式。
+###Breif
+
+考虑到语义变化大，为兼容以后处理类似 "Silver means 17 Credits", "How many Silver equals 170 Credits ?"等语句，
+对statement和question的处理均采用了职责连模式。
 
 ###Question
 You decided to give up on earth after the latest financial collapse left 99.99% of the earth's population with 0.01% of the wealth. Luckily, with the scant sum of money that is left in your account, you are able to afford to rent a spaceship, leave earth, and fly all over the galaxy to sell common metals and dirt (which apparently is worth a lot).
@@ -22,8 +23,8 @@ The numbers used for intergalactic transactions follows similar convention to th
 
 Roman numerals are based on seven symbols:
 
-symbol | I | V | X | L | C | D | M |
-value | 1 | 5 | 10 | 50 | 100 | 500 | 1000|
+|symbol | I | V | X | L | C | D | M |
+|value | 1 | 5 | 10 | 50 | 100 | 500 | 1000|
 
 Numbers are formed by combining symbols together and adding the values. For example, MMVI is 1000 + 1000 + 5 + 1 = 2006. Generally, symbols are placed in order of value, starting with the largest values. When smaller values precede larger values, the smaller values are subtracted from the larger values, and the result is added to the total. For example MCMXLIV = 1000 + (1000 − 100) + (50 − 10) + (5 − 1) = 1944.
 
