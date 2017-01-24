@@ -15,6 +15,9 @@
   <target name="run" depends="build">
     <java classname="test.ant.MerchantGuideToGalaxy" classpath="${merchant_guide_jar}"/>
   </target>
+  <target name="test" depends="build">
+    <java classname="test.ant.MerchantGuideToGalaxy" classpath="${merchant_guide_jar}"/>
+  </target>
   <target name="clean">
     <delete dir="${dest}" />
     <delete file="${merchant_guide_jar}" />
