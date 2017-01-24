@@ -1,0 +1,15 @@
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+  baseName = 'merchant-guide2galaxy'
+  version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+  mavenCentral()
+}
+
