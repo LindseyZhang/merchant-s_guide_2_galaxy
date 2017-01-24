@@ -1,22 +1,22 @@
-package main.java.question;
+package question;
 
-import main.java.PriceCenter;
+import infocontainer.PriceCenter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class QuestionBase {
+public abstract class QuestionHandler {
     private static String DEFAULT_ANSWER = "I have no idea what you are talking about\n";
-    private QuestionBase nextHandler = null;
+    private QuestionHandler nextHandler = null;
     protected PriceCenter priceCenter;
     Pattern pattern;
     Matcher matcher;
 
-    protected QuestionBase(PriceCenter priceCenter) {
+    protected QuestionHandler(PriceCenter priceCenter) {
         this.priceCenter = priceCenter;
     }
 
-    public void setNextHandler(QuestionBase nextHandler) {
+    public void setNextHandler(QuestionHandler nextHandler) {
         this.nextHandler = nextHandler;
     }
 

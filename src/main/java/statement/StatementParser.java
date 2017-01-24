@@ -1,21 +1,21 @@
-package main.java.statement;
+package statement;
 
-import main.java.PriceCenter;
+import infocontainer.PriceCenter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class StatementBase {
+public abstract class StatementParser {
     protected PriceCenter priceCenter;
-    private StatementBase nextHandler = null;
+    private StatementParser nextHandler = null;
     Pattern pattern;
     Matcher matcher;
 
-    public StatementBase(PriceCenter priceCenter) {
+    public StatementParser(PriceCenter priceCenter) {
         this.priceCenter = priceCenter;
     }
 
-    public void setNextHandler(StatementBase nextHandler) {
+    public void setNextHandler(StatementParser nextHandler) {
         this.nextHandler = nextHandler;
     }
 

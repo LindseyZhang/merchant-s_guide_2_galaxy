@@ -1,10 +1,10 @@
-package main.java.statement;
+package statement;
 
-import main.java.PriceCenter;
+import infocontainer.PriceCenter;
 
 import java.util.regex.Pattern;
 
-public class StatementParserForIsSymbol extends StatementBase {
+public class StatementParserForIsSymbol extends StatementParser {
     public StatementParserForIsSymbol(PriceCenter priceCenter) {
         super(priceCenter);
         String questin_pattern = "(.*?) is (.*?)";

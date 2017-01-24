@@ -1,11 +1,11 @@
-package main.java.question;
+package question;
 
-import main.java.PriceCenter;
-import main.java.util.RomanNumberConvertor;
+import infocontainer.PriceCenter;
+import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
-public class QuestionHandlerForHowMuch extends QuestionBase {
+public class QuestionHandlerForHowMuch extends QuestionHandler {
     public QuestionHandlerForHowMuch(PriceCenter priceCenter) {
         super(priceCenter);
         String questin_pattern = "how much is (.*?)\\s\\?";

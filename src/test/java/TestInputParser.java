@@ -1,7 +1,5 @@
-package test.java;
-
-import main.java.util.InputParser;
-import main.java.PriceCenter;
+import util.InputParser;
+import infocontainer.PriceCenter;
 import org.junit.Before;
 import org.junit.Test;
 

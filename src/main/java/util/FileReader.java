@@ -1,5 +1,4 @@
-package main.java.util;
-
+package util;
 
 import java.io.*;
 

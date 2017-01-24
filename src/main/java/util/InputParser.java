@@ -1,15 +1,15 @@
-package main.java.util;
+package util;
 
-import main.java.PriceCenter;
-import main.java.statement.StatementParserForCredits;
-import main.java.statement.StatementParserForIsSymbol;
-import main.java.statement.StatementBase;
+import infocontainer.PriceCenter;
+import statement.StatementParser;
+import statement.StatementParserForCredits;
+import statement.StatementParserForIsSymbol;
 
 import java.util.Vector;
 
 public class InputParser {
     private PriceCenter priceCenter;
-    private StatementBase statementHandler;
+    private StatementParser statementHandler;
     Vector<String> questions = new Vector<String>();
 
     public InputParser(PriceCenter priceCenter) {
@@ -41,7 +41,7 @@ public class InputParser {
     }
 
     private void initStatementChain(PriceCenter priceCenter) {
-        StatementBase sumGoodStatement;
+        StatementParser sumGoodStatement;
         statementHandler = new StatementParserForIsSymbol(priceCenter);
         sumGoodStatement = new StatementParserForCredits(priceCenter);
         statementHandler.setNextHandler(sumGoodStatement);

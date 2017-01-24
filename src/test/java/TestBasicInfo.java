@@ -1,6 +1,4 @@
-package test.java;
-
-import main.java.BasicInfo;
+import infocontainer.BasicInfo;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertFalse;

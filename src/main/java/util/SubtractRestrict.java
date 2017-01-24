@@ -1,6 +1,6 @@
-package main.java.util;
+package util;
 
-import main.java.BasicInfo;
+import infocontainer.BasicInfo;
 
 import java.util.HashMap;
 import java.util.HashSet;

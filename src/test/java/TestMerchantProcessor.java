@@ -1,10 +1,7 @@
-package test.java;
 
-import main.java.MerchantProcessor;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 public class TestMerchantProcessor {
     @Test

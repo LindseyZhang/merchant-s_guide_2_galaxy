@@ -1,3 +1,6 @@
 out/*
 .idea/*
 src/main/.Main.java.swp
+*.iml
+*.ipr
+.idea/*

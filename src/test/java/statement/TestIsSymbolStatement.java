@@ -1,9 +1,6 @@
-package test.java.statement;
+package statement;
 
-
-import main.java.PriceCenter;
-import main.java.statement.StatementParserForIsSymbol;
-import main.java.statement.StatementBase;
+import infocontainer.PriceCenter;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +13,7 @@ public class TestIsSymbolStatement {
 
         assertEquals(priceCenter.getBasicSymbol("glob"), priceCenter.NoSymbol);
 
-        StatementBase statementBase = new StatementParserForIsSymbol(priceCenter);
+        StatementParser statementBase = new StatementParserForIsSymbol(priceCenter);
         statementBase.handleStatement(question);
 
         assertEquals(priceCenter.getBasicSymbol("glob"), 'I');

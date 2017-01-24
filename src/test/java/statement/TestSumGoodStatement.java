@@ -1,8 +1,6 @@
-package test.java.statement;
+package statement;
 
-import main.java.PriceCenter;
-import main.java.statement.StatementBase;
-import main.java.statement.StatementParserForCredits;
+import infocontainer.PriceCenter;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +15,7 @@ public class TestSumGoodStatement {
 
         assertEquals((int) priceCenter.getMissingSymbolValue("Gold"), (int) priceCenter.NoMissingSymbol);
 
-        StatementBase statementBase = new StatementParserForCredits(priceCenter);
+        StatementParser statementBase = new StatementParserForCredits(priceCenter);
         statementBase.handleStatement(statement);
 
         assertEquals((int) priceCenter.getMissingSymbolValue("Gold"), (int) 14450.0);

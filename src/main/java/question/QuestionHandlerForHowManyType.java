@@ -1,11 +1,11 @@
-package main.java.question;
+package question;
 
-import main.java.PriceCenter;
-import main.java.util.RomanNumberConvertor;
+import infocontainer.PriceCenter;
+import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
-public class QuestionHandlerForHowManyType extends QuestionBase {
+public class QuestionHandlerForHowManyType extends QuestionHandler {
 
     public QuestionHandlerForHowManyType(PriceCenter priceCenter) {
         super(priceCenter);

@@ -1,6 +1,4 @@
-package test.java;
-
-import main.java.util.SymbolsValidator;
+import util.SymbolsValidator;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertFalse;

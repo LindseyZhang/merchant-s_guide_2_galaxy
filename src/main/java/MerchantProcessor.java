@@ -1,14 +1,13 @@
-package main.java;
-
-import main.java.question.QuestionHandlerForHowManyType;
-import main.java.question.QuestionHandlerForHowMuch;
-import main.java.question.QuestionBase;
-import main.java.util.InputParser;
+import infocontainer.PriceCenter;
+import question.QuestionHandler;
+import question.QuestionHandlerForHowManyType;
+import question.QuestionHandlerForHowMuch;
+import util.InputParser;
 
 public class MerchantProcessor {
     private PriceCenter priceCenter = new PriceCenter();
     private InputParser inputParser = new InputParser(priceCenter);
-    private QuestionBase questionHandler;
+    private QuestionHandler questionHandler;
 
     public MerchantProcessor(String input) {
           inputParser.parseInput(input);
@@ -24,7 +23,7 @@ public class MerchantProcessor {
     }
 
     private void initQuestionChain(PriceCenter priceCenter) {
-        QuestionBase howMuchQuestion;
+        QuestionHandler howMuchQuestion;
         questionHandler = new QuestionHandlerForHowManyType(priceCenter);
         howMuchQuestion = new QuestionHandlerForHowMuch(priceCenter);
         questionHandler.setNextHandler(howMuchQuestion);

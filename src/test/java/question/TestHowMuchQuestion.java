@@ -1,8 +1,6 @@
-package test.java.question;
+package question;
 
-import main.java.PriceCenter;
-import main.java.question.QuestionHandlerForHowMuch;
-import main.java.question.QuestionBase;
+import infocontainer.PriceCenter;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -16,7 +14,7 @@ public class TestHowMuchQuestion {
         priceCenter.addBasicSymbolMap("tegj", 'L');
         priceCenter.addBasicSymbolMap("glob", 'I');
 
-        QuestionBase questionHandler = new QuestionHandlerForHowMuch(priceCenter);
+        QuestionHandler questionHandler = new QuestionHandlerForHowMuch(priceCenter);
         String answer = questionHandler.handleQuestion(question);
 
         String expect_result = "pish tegj glob glob is 42\n";

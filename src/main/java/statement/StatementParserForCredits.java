@@ -1,11 +1,11 @@
-package main.java.statement;
+package statement;
 
-import main.java.PriceCenter;
-import main.java.util.RomanNumberConvertor;
+import infocontainer.PriceCenter;
+import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
-public class StatementParserForCredits extends StatementBase {
+public class StatementParserForCredits extends StatementParser {
     private RomanNumberConvertor convertor = new RomanNumberConvertor();
 
     public StatementParserForCredits(PriceCenter priceCenter) {

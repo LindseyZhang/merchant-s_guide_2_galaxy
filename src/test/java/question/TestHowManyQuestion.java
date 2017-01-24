@@ -1,8 +1,6 @@
-package test.java.question;
+package question;
 
-import main.java.PriceCenter;
-import main.java.question.QuestionHandlerForHowManyType;
-import main.java.question.QuestionBase;
+import infocontainer.PriceCenter;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -17,7 +15,7 @@ public class TestHowManyQuestion {
         priceCenter.addBasicSymbolMap("glob", 'I');
         priceCenter.addMissingSymbol("Silver", 17.0);
 
-        QuestionBase questionHandler = new QuestionHandlerForHowManyType(priceCenter);
+        QuestionHandler questionHandler = new QuestionHandlerForHowManyType(priceCenter);
         String answer = questionHandler.handleQuestion(question);
         String expect_result = "glob prok Silver is 68 Credits\n";
         assertEquals(answer, expect_result);
