@@ -3,7 +3,7 @@ package main;
 public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.err.println("please give a input file as parameter");
+            System.err.println("please give a file path!");
             return;
         }
 
