@@ -1,6 +1,6 @@
-package main.statement;
+package main.java.statement;
 
-import main.PriceCenter;
+import main.java.PriceCenter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,22 +15,22 @@ public abstract class StatementBase {
         this.priceCenter = priceCenter;
     }
 
-    public void SetNextHandler(StatementBase nextHandler) {
+    public void setNextHandler(StatementBase nextHandler) {
         this.nextHandler = nextHandler;
     }
 
-    public void HandleStatement(String statement) {
-        if (IsThisStatement(statement)) {
-            ParseStatement(statement);
+    public void handleStatement(String statement) {
+        if (isThisStatement(statement)) {
+            parseStatement(statement);
         }
         if (nextHandler != null) {
-            nextHandler.HandleStatement(statement);
+            nextHandler.handleStatement(statement);
         }
     }
 
-    public abstract void ParseStatement(String statement);
+    public abstract void parseStatement(String statement);
 
-    public boolean IsThisStatement(String statement) {
+    public boolean isThisStatement(String statement) {
         matcher = pattern.matcher(statement);
         return matcher.matches();
     }

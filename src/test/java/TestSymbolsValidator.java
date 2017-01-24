@@ -1,6 +1,6 @@
-package test;
+package test.java;
 
-import main.SymbolsValidator;
+import main.java.util.SymbolsValidator;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertFalse;
@@ -16,18 +16,18 @@ public class TestSymbolsValidator {
 
     @Test
     public void testIsRomanValid() {
-        assertTrue(validator.IsRomanValid("MCMIII"));
-        assertTrue(validator.IsRomanValid("MIV"));
-        assertTrue(validator.IsRomanValid("CD"));
-        assertFalse(validator.IsRomanValid("MIIII"));
-        assertTrue(validator.IsRomanValid("MCCCXC"));
-        assertFalse(validator.IsRomanValid("DM"));
+        assertTrue(validator.isRomanValid("MCMIII"));
+        assertTrue(validator.isRomanValid("MIV"));
+        assertTrue(validator.isRomanValid("CD"));
+        assertFalse(validator.isRomanValid("MIIII"));
+        assertTrue(validator.isRomanValid("MCCCXC"));
+        assertFalse(validator.isRomanValid("DM"));
 
-        assertFalse(validator.IsRomanValid("DD"));
+        assertFalse(validator.isRomanValid("DD"));
 
-        assertFalse(validator.IsRomanValid("IIM"));
-        assertTrue(validator.IsRomanValid("VI"));
-        assertFalse(validator.IsRomanValid("VX"));
+        assertFalse(validator.isRomanValid("IIM"));
+        assertTrue(validator.isRomanValid("VI"));
+        assertFalse(validator.isRomanValid("VX"));
     }
  
  /*   @Test

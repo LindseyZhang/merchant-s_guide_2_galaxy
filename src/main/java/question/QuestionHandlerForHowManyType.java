@@ -1,20 +1,20 @@
-package main.question;
+package main.java.question;
 
-import main.PriceCenter;
-import main.RomanNumberConvertor;
+import main.java.PriceCenter;
+import main.java.util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
-public class HowManyQuestion extends QuestionBase {
+public class QuestionHandlerForHowManyType extends QuestionBase {
 
-    public HowManyQuestion(PriceCenter priceCenter) {
+    public QuestionHandlerForHowManyType(PriceCenter priceCenter) {
         super(priceCenter);
         String questin_pattern = "how many Credits is (.*?) \\?";
         pattern = Pattern.compile(questin_pattern);
     }
 
     @Override
-    public String AnswerQuestion(String question) {
+    public String answerQuestion(String question) {
         if (matcher.matches()) {
             String[] symbols = matcher.group(1).split(" ");
 
@@ -22,15 +22,15 @@ public class HowManyQuestion extends QuestionBase {
             String valueSymbol = null;
 
             for (String symbol : symbols) {
-                if (priceCenter.NoSymbol != priceCenter.GetBasicSymbol(symbol)) {
-                    strBuilder.append(priceCenter.GetBasicSymbol(symbol));
+                if (priceCenter.NoSymbol != priceCenter.getBasicSymbol(symbol)) {
+                    strBuilder.append(priceCenter.getBasicSymbol(symbol));
                 } else {
                     valueSymbol = symbol;
                 }
             }
 
-            int total = (int) (RomanNumberConvertor.RomanNumberToInteger(strBuilder.toString())
-                    * priceCenter.GetMissingSymbolValue(valueSymbol));
+            int total = (int) (RomanNumberConvertor.romanNumberToInteger(strBuilder.toString())
+                    * priceCenter.getMissingSymbolValue(valueSymbol));
             String result = matcher.group(1) + " is " + total + " Credits\n";
             return result;
         }

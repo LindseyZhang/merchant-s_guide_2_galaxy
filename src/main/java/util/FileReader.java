@@ -1,10 +1,10 @@
-package main;
+package main.java.util;
 
 
 import java.io.*;
 
 public class FileReader {
-    public static String ReadFile(String filePath) {
+    public static String readFile(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
             System.out.println("file " + filePath + " doesn't exist.");

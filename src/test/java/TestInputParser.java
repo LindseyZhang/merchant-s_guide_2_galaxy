@@ -1,7 +1,7 @@
-package test;
+package test.java;
 
-import main.InputParser;
-import main.PriceCenter;
+import main.java.util.InputParser;
+import main.java.PriceCenter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,8 +23,8 @@ public class TestInputParser {
 
     @Test
     public void TestIsAQuestion() {
-        assertTrue(inputParser.IsAQuestion("how much is pish tegj glob glob ?\n"));
-        assertFalse(inputParser.IsAQuestion("tegj is L\n"));
+        assertTrue(inputParser.isAQuestion("how much is pish tegj glob glob ?\n"));
+        assertFalse(inputParser.isAQuestion("tegj is L\n"));
     }
 
     @Test
@@ -36,11 +36,11 @@ public class TestInputParser {
         expect_questions.add("how much is pish tegj glob glob ?");
         expect_questions.add("how many Credits is glob prok Silver ?");
 
-        inputParser.ParseInput(input);
-        System.out.println(inputParser.GetQuestions());
-        assertEquals(expect_questions, inputParser.GetQuestions());
+        inputParser.parseInput(input);
+        System.out.println(inputParser.getQuestions());
+        assertEquals(expect_questions, inputParser.getQuestions());
 
-        assertEquals('L', priceCenter.GetBasicSymbol("tegj"));
+        assertEquals('L', priceCenter.getBasicSymbol("tegj"));
     }
 
 }

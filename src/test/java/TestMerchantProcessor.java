@@ -1,6 +1,6 @@
-package test;
+package test.java;
 
-import main.MerchantProcess;
+import main.java.MerchantProcessor;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -22,7 +22,7 @@ public class TestMerchantProcessor {
                 "how many Credits is glob prok Iron ?\n" +
                 "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?\n";
 
-        MerchantProcess convetorMain = new MerchantProcess(input);
+        MerchantProcessor convetorMain = new MerchantProcessor(input);
 
         String result = convetorMain.getResult();
 
