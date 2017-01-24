@@ -5,24 +5,33 @@ import java.util.Map;
 import java.util.Vector;
 
 public class PriceCenter {
-    private
-    Map<String,Character> prices = new HashMap<String, Character>();
+    public char NoSymbol = '\0';
+    public double NoPrice = '0';
+    private Map<String, Character> basicSymbolMap = new HashMap<String, Character>();
+    private Map<String, Double> missingSymbolMap = new HashMap<String, Double>();
 
-    public void addItemPrice(String object, Character romanPrice) {
-            prices.put(object, romanPrice);
+    public void AddBasicSymbolMap(String object, Character romanPrice) {
+        basicSymbolMap.put(object, romanPrice);
     }
 
-
-    public char getItemPrice(String object) {
-        if (prices.containsKey(object)) {
-        return prices.get(object);
+    public char GetBasicSymbol(String object) {
+        if (basicSymbolMap.containsKey(object)) {
+        return basicSymbolMap.get(object);
         } else {
-            return ' ';
+            return NoSymbol;
         }
     }
 
-    public void GeneratePriceInfo(Vector<String> statements) {
+    public double GetMissingSymbolValue(String key) {
+        if (missingSymbolMap.containsKey(key)) {
+            return missingSymbolMap.get(key);
+        } else {
+            return NoPrice;
+        }
+    }
 
+    public void AddMissingSymbol(String key, double value) {
+        missingSymbolMap.put(key, value);
     }
 
 }

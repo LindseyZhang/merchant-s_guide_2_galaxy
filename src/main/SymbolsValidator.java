@@ -23,7 +23,7 @@ public class SymbolsValidator {
                 && IsSubtractValid(symbolsArray);
     }
 
-    public boolean IsIXCMRepeatInSuccessionMaxThreeTimes(){
+    private boolean IsIXCMRepeatInSuccessionMaxThreeTimes(){
         char[] targets = {'I','X','C','N'};
 
         char cur;
@@ -49,7 +49,7 @@ public class SymbolsValidator {
 
 
     //"D", "L", and "V" can never be repeated.
-    public boolean DLVCanNeverRepeat() {
+    private boolean DLVCanNeverRepeat() {
         char[] targets = {'D','L','V'};
         Map<Character,Integer>  result = new HashMap<Character,Integer>();
 
@@ -73,7 +73,7 @@ public class SymbolsValidator {
         return false;
     }
 
-   public boolean IsSubtractValid (char[] array) {
+   private boolean IsSubtractValid (char[] array) {
        SubtractRestrict subtractRestrict = new SubtractRestrict();
        subtractRestrict.addSubtractFromRule('I',
                new HashSet<Character>() {{

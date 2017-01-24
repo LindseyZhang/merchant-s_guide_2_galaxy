@@ -1,39 +1,35 @@
 package main;
 
-import main.question.HowManyQuestion;
-import main.question.QuestionBase;
+import main.statement.IsSymbolStatement;
+import main.statement.StatementBase;
+import main.statement.SumGoodStatement;
 
 import java.util.Vector;
 
 public class InputParser {
-
     private PriceCenter priceCenter;
+    private StatementBase statementHandler;
     Vector<String> questions = new Vector<String>();
-    Vector<String> statements = new Vector<String>();
 
-    public String DealInput(String input) {
-        CategoryInput(input);
-        priceCenter.GeneratePriceInfo(statements);
-
-        QuestionBase howMuchQuestion,howManyQuestion;
-        howManyQuestion = new HowManyQuestion();
-        howMuchQuestion = new HowManyQuestion();
-        howManyQuestion.setNextHandler(howMuchQuestion);
-  //      return "";
+    public InputParser(PriceCenter priceCenter) {
+        this.priceCenter = priceCenter;
+        InitStatementChain(priceCenter);
     }
 
-    public void CategoryInput(String input) {
+    public Vector<String> getQuestions() {
+        return questions;
+    }
+
+    public void ParseInput(String input) {
         String[] inputInLine = input.split("\n");
         for ( int i = 0; i < inputInLine.length; ++i ) {
             if (IsAQuestion(inputInLine[i])) {
-                questions.add(inputInLine[i]);
+               questions.add(inputInLine[i]);
             } else {
-                statements.add(inputInLine[i]);
+                ParseStatement(inputInLine[i]);
             }
         }
     }
-
-
 
     public boolean IsAQuestion(String line) {
        return line.contains("?");
@@ -43,4 +39,14 @@ public class InputParser {
         return !IsAQuestion(line);
     }
 
+    private void InitStatementChain(PriceCenter priceCenter) {
+        StatementBase sumGoodStatement;
+        statementHandler = new IsSymbolStatement(priceCenter);
+        sumGoodStatement = new SumGoodStatement(priceCenter);
+        statementHandler.setNextHandler(sumGoodStatement);
+    }
+
+    private void ParseStatement(String statement) {
+        statementHandler.handleStatement(statement);
+    }
 }
