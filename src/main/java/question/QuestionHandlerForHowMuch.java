@@ -1,13 +1,13 @@
 package question;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
 public class QuestionHandlerForHowMuch extends QuestionHandler {
-    public QuestionHandlerForHowMuch(PriceCenter priceCenter) {
-        super(priceCenter);
+    public QuestionHandlerForHowMuch(GalaxyRomanInfo galaxyRomanInfo) {
+        super(galaxyRomanInfo);
         String questin_pattern = "how much is (.*?)\\s\\?";
         pattern = Pattern.compile(questin_pattern);
     }
@@ -19,8 +19,8 @@ public class QuestionHandlerForHowMuch extends QuestionHandler {
 
             StringBuilder strBuilder = new StringBuilder();
             for (String symbol : symbols) {
-                if (priceCenter.NoSymbol != priceCenter.getBasicSymbol(symbol)) {
-                    strBuilder.append(priceCenter.getBasicSymbol(symbol));
+                if (galaxyRomanInfo.NoSymbol != galaxyRomanInfo.getBasicSymbol(symbol)) {
+                    strBuilder.append(galaxyRomanInfo.getBasicSymbol(symbol));
                 } else {
                     System.err.println("undefined symbol " + symbol);
                 }

@@ -1,6 +1,6 @@
 package util;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 import statement.StatementParser;
 import statement.StatementParserForCredits;
 import statement.StatementParserForIsSymbol;
@@ -8,13 +8,13 @@ import statement.StatementParserForIsSymbol;
 import java.util.Vector;
 
 public class InputParser {
-    private PriceCenter priceCenter;
+    private GalaxyRomanInfo galaxyRomanInfo;
     private StatementParser statementHandler;
     Vector<String> questions = new Vector<String>();
 
-    public InputParser(PriceCenter priceCenter) {
-        this.priceCenter = priceCenter;
-        initStatementChain(priceCenter);
+    public InputParser(GalaxyRomanInfo galaxyRomanInfo) {
+        this.galaxyRomanInfo = galaxyRomanInfo;
+        initStatementChain(galaxyRomanInfo);
     }
 
     public Vector<String> getQuestions() {
@@ -40,10 +40,10 @@ public class InputParser {
         return !isAQuestion(line);
     }
 
-    private void initStatementChain(PriceCenter priceCenter) {
+    private void initStatementChain(GalaxyRomanInfo galaxyRomanInfo) {
         StatementParser sumGoodStatement;
-        statementHandler = new StatementParserForIsSymbol(priceCenter);
-        sumGoodStatement = new StatementParserForCredits(priceCenter);
+        statementHandler = new StatementParserForIsSymbol(galaxyRomanInfo);
+        sumGoodStatement = new StatementParserForCredits(galaxyRomanInfo);
         statementHandler.setNextHandler(sumGoodStatement);
     }
 

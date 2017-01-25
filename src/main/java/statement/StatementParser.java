@@ -1,18 +1,18 @@
 package statement;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class StatementParser {
-    protected PriceCenter priceCenter;
+    protected GalaxyRomanInfo galaxyRomanInfo;
     private StatementParser nextHandler = null;
     Pattern pattern;
     Matcher matcher;
 
-    public StatementParser(PriceCenter priceCenter) {
-        this.priceCenter = priceCenter;
+    public StatementParser(GalaxyRomanInfo galaxyRomanInfo) {
+        this.galaxyRomanInfo = galaxyRomanInfo;
     }
 
     public void setNextHandler(StatementParser nextHandler) {

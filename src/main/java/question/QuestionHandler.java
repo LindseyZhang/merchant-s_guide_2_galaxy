@@ -1,6 +1,6 @@
 package question;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
 public abstract class QuestionHandler {
     private static String DEFAULT_ANSWER = "I have no idea what you are talking about\n";
     private QuestionHandler nextHandler = null;
-    protected PriceCenter priceCenter;
+    protected GalaxyRomanInfo galaxyRomanInfo;
     Pattern pattern;
     Matcher matcher;
 
-    protected QuestionHandler(PriceCenter priceCenter) {
-        this.priceCenter = priceCenter;
+    protected QuestionHandler(GalaxyRomanInfo galaxyRomanInfo) {
+        this.galaxyRomanInfo = galaxyRomanInfo;
     }
 
     public void setNextHandler(QuestionHandler nextHandler) {

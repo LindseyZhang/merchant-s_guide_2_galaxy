@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-public class BasicInfo {
+public class BasicRomanValueInfo {
     private static Map<Character, Integer> symbolValueMap = new HashMap<Character, Integer>() {{
         put('I', 1);
         put('V', 5);

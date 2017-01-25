@@ -1,14 +1,14 @@
 package question;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
 
 public class QuestionHandlerForHowManyType extends QuestionHandler {
 
-    public QuestionHandlerForHowManyType(PriceCenter priceCenter) {
-        super(priceCenter);
+    public QuestionHandlerForHowManyType(GalaxyRomanInfo galaxyRomanInfo) {
+        super(galaxyRomanInfo);
         String questin_pattern = "how many Credits is (.*?) \\?";
         pattern = Pattern.compile(questin_pattern);
     }
@@ -22,15 +22,15 @@ public class QuestionHandlerForHowManyType extends QuestionHandler {
             String valueSymbol = null;
 
             for (String symbol : symbols) {
-                if (priceCenter.NoSymbol != priceCenter.getBasicSymbol(symbol)) {
-                    strBuilder.append(priceCenter.getBasicSymbol(symbol));
+                if (galaxyRomanInfo.NoSymbol != galaxyRomanInfo.getBasicSymbol(symbol)) {
+                    strBuilder.append(galaxyRomanInfo.getBasicSymbol(symbol));
                 } else {
                     valueSymbol = symbol;
                 }
             }
 
             int total = (int) (RomanNumberConvertor.romanNumberToInteger(strBuilder.toString())
-                    * priceCenter.getMissingSymbolValue(valueSymbol));
+                    * galaxyRomanInfo.getMissingSymbolValue(valueSymbol));
             String result = matcher.group(1) + " is " + total + " Credits\n";
             return result;
         }

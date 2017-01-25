@@ -3,7 +3,7 @@ package infocontainer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PriceCenter {
+public class GalaxyRomanInfo {
     public char NoSymbol = '\0';
     public double NoMissingSymbol = '0';
     private Map<String, Character> basicSymbolMap = new HashMap<String, Character>();

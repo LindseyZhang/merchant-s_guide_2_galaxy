@@ -1,5 +1,6 @@
-import util.InputParser;
-import infocontainer.PriceCenter;
+package util;
+
+import infocontainer.GalaxyRomanInfo;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,12 +12,12 @@ import static junit.framework.Assert.assertTrue;
 
 public class TestInputParser {
     private InputParser inputParser;
-    private PriceCenter priceCenter;
+    private GalaxyRomanInfo galaxyRomanInfo;
 
     @Before
     public void SetUp() {
-        priceCenter = new PriceCenter();
-        inputParser = new InputParser(priceCenter);
+        galaxyRomanInfo = new GalaxyRomanInfo();
+        inputParser = new InputParser(galaxyRomanInfo);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class TestInputParser {
         System.out.println(inputParser.getQuestions());
         assertEquals(expect_questions, inputParser.getQuestions());
 
-        assertEquals('L', priceCenter.getBasicSymbol("tegj"));
+        assertEquals('L', galaxyRomanInfo.getBasicSymbol("tegj"));
     }
 
 }

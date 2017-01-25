@@ -1,6 +1,6 @@
 package util;
 
-import infocontainer.BasicInfo;
+import infocontainer.BasicRomanValueInfo;
 
 import java.util.Vector;
 
@@ -13,16 +13,16 @@ public class RomanNumberConvertor {
             return 0;
         }
 
-        Vector<Vector<Character>> single_values = BasicInfo.splitSymbolsToElement(roman.toCharArray());
+        Vector<Vector<Character>> single_values = BasicRomanValueInfo.splitSymbolsToElement(roman.toCharArray());
 
         int result = 0;
         for (Vector<Character> single : single_values) {
             if (1 == single.size()) {
-               result += BasicInfo.getSymbolValue(single.firstElement());
+               result += BasicRomanValueInfo.getSymbolValue(single.firstElement());
                 continue;
             }
             if ( 2 == single.size()) {
-                result += BasicInfo.subtractResult(single.elementAt(0), single.elementAt(1));
+                result += BasicRomanValueInfo.subtractResult(single.elementAt(0), single.elementAt(1));
             }
         }
         return result;

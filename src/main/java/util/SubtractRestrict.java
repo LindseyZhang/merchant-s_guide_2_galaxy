@@ -1,6 +1,6 @@
 package util;
 
-import infocontainer.BasicInfo;
+import infocontainer.BasicRomanValueInfo;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,13 +12,13 @@ public class SubtractRestrict {
     private Set<Character> neverSubtractCharacters = new HashSet<Character>();
 
     public void addSubtractFromRule(Character symbol, Set<Character> froms) {
-        if (!BasicInfo.isBasicSymbol(symbol)) {
+        if (!BasicRomanValueInfo.isBasicSymbol(symbol)) {
             System.out.println("Invalid symbol:" + symbol);
             return;
         }
 
         for (Character from : froms) {
-            if (!BasicInfo.isBasicSymbol(symbol)) {
+            if (!BasicRomanValueInfo.isBasicSymbol(symbol)) {
                 System.out.println("Invalid symbol in froms:" + symbol);
                 return;
             }
@@ -28,7 +28,7 @@ public class SubtractRestrict {
     }
 
     public void addNeverSubtractRule(Character symbol) {
-        if (!BasicInfo.isBasicSymbol(symbol)) {
+        if (!BasicRomanValueInfo.isBasicSymbol(symbol)) {
             System.out.println("Invalid symbol:" + symbol);
             return;
         } 
@@ -59,7 +59,7 @@ public class SubtractRestrict {
     }
 
     private boolean isSubtract(char first, char second) {
-        return BasicInfo.firstSymbolSmallerThanSecond(first, second);
+        return BasicRomanValueInfo.firstSymbolSmallerThanSecond(first, second);
     }
 
 }

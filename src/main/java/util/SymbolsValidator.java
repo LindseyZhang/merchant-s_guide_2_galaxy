@@ -1,6 +1,6 @@
 package util;
 
-import infocontainer.BasicInfo;
+import infocontainer.BasicRomanValueInfo;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ public class SymbolsValidator {
     }
 
     public boolean isRomanValid(String roman) {
-        if (!BasicInfo.isBasicSymbolString(roman)) return false;
+        if (!BasicRomanValueInfo.isBasicSymbolString(roman)) return false;
         symbolsArray = roman.toCharArray();
 
         return successionRepeatRule()
@@ -100,7 +100,7 @@ public class SymbolsValidator {
     }
 
     private boolean onlyOneSmallSymbolSubstractedFromRule() {
-        Vector<Vector<Character>> symbols = BasicInfo.splitSymbolsToElement(symbolsArray);
+        Vector<Vector<Character>> symbols = BasicRomanValueInfo.splitSymbolsToElement(symbolsArray);
         for (Vector<Character> singleValue : symbols) {
             if (singleValue.size() > MAX_COMBINE_SYMBOL_SIZE) {
                 return false;

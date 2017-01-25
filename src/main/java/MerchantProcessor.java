@@ -1,17 +1,17 @@
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 import question.QuestionHandler;
 import question.QuestionHandlerForHowManyType;
 import question.QuestionHandlerForHowMuch;
 import util.InputParser;
 
 public class MerchantProcessor {
-    private PriceCenter priceCenter = new PriceCenter();
-    private InputParser inputParser = new InputParser(priceCenter);
+    private GalaxyRomanInfo galaxyRomanInfo = new GalaxyRomanInfo();
+    private InputParser inputParser = new InputParser(galaxyRomanInfo);
     private QuestionHandler questionHandler;
 
     public MerchantProcessor(String input) {
           inputParser.parseInput(input);
-          initQuestionChain(priceCenter);
+          initQuestionChain(galaxyRomanInfo);
     }
 
     public String getResult() {
@@ -22,10 +22,10 @@ public class MerchantProcessor {
         return result;
     }
 
-    private void initQuestionChain(PriceCenter priceCenter) {
+    private void initQuestionChain(GalaxyRomanInfo galaxyRomanInfo) {
         QuestionHandler howMuchQuestion;
-        questionHandler = new QuestionHandlerForHowManyType(priceCenter);
-        howMuchQuestion = new QuestionHandlerForHowMuch(priceCenter);
+        questionHandler = new QuestionHandlerForHowManyType(galaxyRomanInfo);
+        howMuchQuestion = new QuestionHandlerForHowMuch(galaxyRomanInfo);
         questionHandler.setNextHandler(howMuchQuestion);
     }
 

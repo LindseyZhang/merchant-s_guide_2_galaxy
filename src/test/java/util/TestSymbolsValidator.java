@@ -1,3 +1,5 @@
+package util;
+
 import util.SymbolsValidator;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package statement;
 
-import infocontainer.PriceCenter;
+import infocontainer.GalaxyRomanInfo;
 import util.RomanNumberConvertor;
 
 import java.util.regex.Pattern;
@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public class StatementParserForCredits extends StatementParser {
     private RomanNumberConvertor convertor = new RomanNumberConvertor();
 
-    public StatementParserForCredits(PriceCenter priceCenter) {
-        super(priceCenter);
+    public StatementParserForCredits(GalaxyRomanInfo galaxyRomanInfo) {
+        super(galaxyRomanInfo);
         String statement_pattern = "(.*?) is ([0-9]+) Credits";
         pattern = Pattern.compile(statement_pattern);
     }
@@ -23,14 +23,14 @@ public class StatementParserForCredits extends StatementParser {
             StringBuilder strBuilder = new StringBuilder();
             String missingSymbol = null;
             for (String symbol : symbols) {
-                if (priceCenter.NoSymbol != priceCenter.getBasicSymbol(symbol)) {
-                    strBuilder.append(priceCenter.getBasicSymbol(symbol));
+                if (galaxyRomanInfo.NoSymbol != galaxyRomanInfo.getBasicSymbol(symbol)) {
+                    strBuilder.append(galaxyRomanInfo.getBasicSymbol(symbol));
                 } else {
                     missingSymbol = symbol;
                 }
             }
 
-            priceCenter.addMissingSymbol(missingSymbol,
+            galaxyRomanInfo.addMissingSymbol(missingSymbol,
                     total_value / convertor.romanNumberToInteger(strBuilder.toString()));
         }
     }
