@@ -3,109 +3,37 @@ package util;
 import infocontainer.BasicRomanValueInfo;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Vector;
 
 public class SymbolsValidator {
-    private static final int REPEAT_LIMIT = 2;
-    private static final int MAX_COMBINE_SYMBOL_SIZE = 2;
-    private static final int MAX_SUCCESSION_TIME = 3;
-    private char[] successionRepeatSymbols = {'I', 'X', 'C', 'N'};
-    private char[] neverRepeatSymbols = {'D', 'L', 'V'};
-    private char[] symbolsArray;
+    private Map<String, Integer> allRoman;
 
     public SymbolsValidator() {
+        InitAllRoman();
     }
 
     public boolean isRomanValid(String roman) {
         if (!BasicRomanValueInfo.isBasicSymbolString(roman)) return false;
-        symbolsArray = roman.toCharArray();
-
-        return successionRepeatRule()
-                && neverRepeatRule()
-                && onlyOneSmallSymbolSubstractedFromRule()
-                && subtractRule(symbolsArray);
+        return allRoman.containsKey(roman);
     }
 
-    private boolean successionRepeatRule() {
-        char cur;
-        if (symbolsArray.length <= MAX_SUCCESSION_TIME) {
-            return true;
+    private void InitAllRoman() {
+        allRoman = new HashMap<String, Integer> ();
+
+        String[][] allPos = new String[][]{
+                {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
+                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
+                {"", "M", "MM", "MMM"}
+        };
+
+        for (int i = 0; i <=3999; ++i) {
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.append(allPos[3][i/1000%10]);
+            strBuilder.append(allPos[2][i/100%10]);
+            strBuilder.append(allPos[1][i/10%10]);
+            strBuilder.append(allPos[0][i%10]);
+            allRoman.put(strBuilder.toString(), i);
         }
-        cur = symbolsArray[0];
-        int count = 1;
-
-        for (int i = 1; i < symbolsArray.length; ++i) {
-            if (!charInTarget(cur, successionRepeatSymbols)) {
-                cur = symbolsArray[i];
-                continue;
-            }
-
-            if (cur == symbolsArray[i]) {
-                ++count;
-                if (MAX_SUCCESSION_TIME < count) return false;
-            } else {
-                cur = symbolsArray[i];
-                count = 1;
-            }
-        }
-        return true;
-    }
-
-    private boolean neverRepeatRule() {
-        Map<Character, Integer> result = new HashMap<Character, Integer>();
-
-        for (int i = 0; i < symbolsArray.length; ++i) {
-            if (!charInTarget(symbolsArray[i], neverRepeatSymbols)) continue;
-
-            if (!result.containsKey(symbolsArray[i])) {
-                result.put(symbolsArray[i], 1);
-            } else {
-                result.put(symbolsArray[i], result.get(symbolsArray[i]) + 1);
-                if (result.get(symbolsArray[i]) >= REPEAT_LIMIT) return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean charInTarget(char symbol, char[] targets) {
-        for (int i = 0; i < targets.length; ++i) {
-            if (symbol == targets[i]) return true;
-        }
-        return false;
-    }
-
-    private boolean subtractRule(char[] array) {
-        SubtractRestrict subtractRestrict = new SubtractRestrict();
-        subtractRestrict.addSubtractFromRule('I', new HashSet<Character>() {{
-            add('V');
-            add('X');
-        }});
-
-        subtractRestrict.addSubtractFromRule('X', new HashSet<Character>() {{
-            add('L');
-            add('C');
-        }});
-        subtractRestrict.addSubtractFromRule('C', new HashSet<Character>() {{
-            add('D');
-            add('M');
-        }});
-
-        subtractRestrict.addNeverSubtractRule('V');
-        subtractRestrict.addNeverSubtractRule('L');
-        subtractRestrict.addNeverSubtractRule('D');
-
-        return subtractRestrict.isSubtractValidSymbol(array);
-    }
-
-    private boolean onlyOneSmallSymbolSubstractedFromRule() {
-        Vector<Vector<Character>> symbols = BasicRomanValueInfo.splitSymbolsToElement(symbolsArray);
-        for (Vector<Character> singleValue : symbols) {
-            if (singleValue.size() > MAX_COMBINE_SYMBOL_SIZE) {
-                return false;
-            }
-        }
-        return true;
     }
 }

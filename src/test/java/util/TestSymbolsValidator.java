@@ -28,6 +28,7 @@ public class TestSymbolsValidator {
         assertFalse(validator.isRomanValid("IIM"));
         assertTrue(validator.isRomanValid("VI"));
         assertFalse(validator.isRomanValid("VX"));
+        assertFalse(validator.isRomanValid("MCCCXCXI"));
     }
  
  /*   @Test

@@ -11,5 +11,6 @@ public class TestRomanNumberConvertor {
         assertEquals(RomanNumberConvertor.romanNumberToInteger("MCMIII"), 1903);
         assertEquals(RomanNumberConvertor.romanNumberToInteger("MCMXLIV"), 1944);
         assertEquals(RomanNumberConvertor.romanNumberToInteger("I"), 1);
+        assertEquals(RomanNumberConvertor.romanNumberToInteger("MCCCXCXI"), 0);
     }
 }

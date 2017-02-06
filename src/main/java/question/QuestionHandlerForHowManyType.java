@@ -9,8 +9,8 @@ public class QuestionHandlerForHowManyType extends QuestionHandler {
 
     public QuestionHandlerForHowManyType(GalaxyRomanInfo galaxyRomanInfo) {
         super(galaxyRomanInfo);
-        String questin_pattern = "how many Credits is (.*?) \\?";
-        pattern = Pattern.compile(questin_pattern);
+        String questionPattern = "how many Credits is (.*?) \\?";
+        pattern = Pattern.compile(questionPattern);
     }
 
     @Override

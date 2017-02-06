@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public class QuestionHandlerForHowMuch extends QuestionHandler {
     public QuestionHandlerForHowMuch(GalaxyRomanInfo galaxyRomanInfo) {
         super(galaxyRomanInfo);
-        String questin_pattern = "how much is (.*?)\\s\\?";
-        pattern = Pattern.compile(questin_pattern);
+        String questionPattern = "how much is (.*?)\\s\\?";
+        pattern = Pattern.compile(questionPattern);
     }
 
     @Override

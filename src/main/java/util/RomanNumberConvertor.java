@@ -13,10 +13,10 @@ public class RomanNumberConvertor {
             return 0;
         }
 
-        Vector<Vector<Character>> single_values = BasicRomanValueInfo.splitSymbolsToElement(roman.toCharArray());
+        Vector<Vector<Character>> singleValues = BasicRomanValueInfo.splitSymbolsToElement(roman.toCharArray());
 
         int result = 0;
-        for (Vector<Character> single : single_values) {
+        for (Vector<Character> single : singleValues) {
             if (1 == single.size()) {
                result += BasicRomanValueInfo.getSymbolValue(single.firstElement());
                 continue;

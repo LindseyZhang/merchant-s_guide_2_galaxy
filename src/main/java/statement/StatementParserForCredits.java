@@ -10,15 +10,15 @@ public class StatementParserForCredits extends StatementParser {
 
     public StatementParserForCredits(GalaxyRomanInfo galaxyRomanInfo) {
         super(galaxyRomanInfo);
-        String statement_pattern = "(.*?) is ([0-9]+) Credits";
-        pattern = Pattern.compile(statement_pattern);
+        String statementPattern = "(.*?) is ([0-9]+) Credits";
+        pattern = Pattern.compile(statementPattern);
     }
 
     @Override
     public void parseStatement(String statement) {
         if (matcher.matches()) {
             String[] symbols = matcher.group(1).split("\\s+");
-            double total_value = Double.valueOf(matcher.group(2));
+            double totalValue = Double.valueOf(matcher.group(2));
 
             StringBuilder strBuilder = new StringBuilder();
             String missingSymbol = null;
@@ -31,7 +31,7 @@ public class StatementParserForCredits extends StatementParser {
             }
 
             galaxyRomanInfo.addMissingSymbol(missingSymbol,
-                    total_value / convertor.romanNumberToInteger(strBuilder.toString()));
+                    totalValue / convertor.romanNumberToInteger(strBuilder.toString()));
         }
     }
 }
