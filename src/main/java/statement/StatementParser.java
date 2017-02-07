@@ -23,7 +23,7 @@ public abstract class StatementParser {
         if (isThisStatement(statement)) {
             parseStatement(statement);
             return;
-        } 
+        }
 
         if (nextHandler != null) {
             nextHandler.handleStatement(statement);

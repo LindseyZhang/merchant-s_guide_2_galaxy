@@ -38,7 +38,7 @@ public class BasicRomanValueInfo {
 
     public static boolean firstSymbolSmallerThanSecond(char first, char second) {
         if (isBasicSymbol(first) && isBasicSymbol(second)) {
-            if (symbolValueMap.get(first) < symbolValueMap.get(second)) return true;
+            return (symbolValueMap.get(first) < symbolValueMap.get(second));
         }
         return false;
     }
